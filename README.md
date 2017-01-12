@@ -1,4 +1,9 @@
-# ExpressTSAngular2
+# Angular2, NodeJS, Auth0
+Example for protecting both server and client side routes
+
+
+
+### Based on ExpressTSAngular2
 Node, Express, TypeScript, Gulp, BrowserSync, Angular2 application skeleton.
 
 Provided for developing **Angular2** applications using **Typescript** served over **node-express** server.
