@@ -10,24 +10,15 @@ export class ServerApp {
         this._app = express();
         this._port = port;
 
-        this._app.get('**', this._renderOk);
-        this._app.get('/angular', this._renderPage);    
-
+        this._app.get('/', this._renderPage);           
         this._app.use('/node_modules', express.static(path.resolve(__dirname, '../../node_modules')));
-        this._app.use('/www', express.static(path.resolve(__dirname, '../../client')));
-        this._app.use('/app2', express.static(path.resolve(__dirname, '../../client/app/js')));
-        this._app.use('/ts', express.static(path.resolve(__dirname, '../../client/app/ts')));        
-     }    
-
-    private _renderOk(req: express.Request, res: express.Response){
-        res.json({
-            "message": "allOK"
-        });        
-    }
+        this._app.use('/www', express.static(path.resolve(__dirname, '../client')));
+     
+     }       
 
     private _renderPage(req: express.Request, res: express.Response){ 
         console.log("angular route requested...");                     
-        res.sendFile(path.resolve(__dirname, '../../client/index.html'));
+        res.sendFile(path.resolve(__dirname, '../client/index.html'));
     }
 
     public startServer(){
