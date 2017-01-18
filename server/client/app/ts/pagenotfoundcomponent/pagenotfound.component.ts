@@ -9,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit{
 
+    private _pageNotFoundMessage: string;
+
     constructor(){
 
     }
 
     ngOnInit(){
-        
+        this._pageNotFoundMessage="404 - Page Not found";
     }
 
 }

@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,25 +10,29 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_1;
     var __moduleName, AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             /// <reference path="../../../../node_modules/@angular/common/index.d.ts" />
             let AppComponent = class AppComponent {
                 constructor() {
-                    this._pageTitle = "Angular 2-Auth0 - Sample application";
+                    this._pageTitle = "Angular2-Auth0 - Sample application";
                 }
             };
             AppComponent = __decorate([
                 core_1.Component({
                     moduleId: __moduleName,
                     selector: 'my-app',
-                    templateUrl: 'app.component.html'
+                    templateUrl: 'app.component.html',
+                    providers: [router_1.RouterModule]
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);

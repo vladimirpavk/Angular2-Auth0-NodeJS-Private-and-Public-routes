@@ -6,14 +6,15 @@ import { RouterModule } from '@angular/router';
 @Component({
   moduleId: __moduleName,
   selector: 'my-app',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  providers: [ RouterModule ]
 })
 export class AppComponent { 
 
   private _pageTitle: string;
 
   constructor(){
-      this._pageTitle="Angular 2-Auth0 - Sample application";
+      this._pageTitle="Angular2-Auth0 - Sample application";
   }
 
 }

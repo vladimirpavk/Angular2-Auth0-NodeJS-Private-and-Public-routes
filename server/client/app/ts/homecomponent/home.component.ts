@@ -9,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
+    private _homeMessage: string;
+    private _loginMessage: string;
+    private _notloginMessage: string;
+
     constructor(){
 
     }
 
     ngOnInit(){
-        
+        this._homeMessage="Welcome to the application...";
+        this._loginMessage="...you are authorized";
+        this._notloginMessage="...you are NOT authorized. Please login or die.";
     }
 
 }
