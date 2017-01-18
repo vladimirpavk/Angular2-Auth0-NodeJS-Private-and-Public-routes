@@ -12,7 +12,7 @@ var browserSync = require('browser-sync');
   console.log("Initiating browser sync configuration...");
     browserSync.init(
         {
-        proxy: "http://localhost:3036/"                       
+            proxy: "http://localhost:3036/"                       
         }
     );
 
@@ -59,24 +59,17 @@ gulp.task('watch_server', ['watch_server_changes'], function(){
 
 // client (watch_client)
 //**********************************************************************
-// 1. When started - initial compile, clean everything in ./client/app/js, then compile everything from client/app/ts
+// 1. Started - initial compile, clean everything in ./client/app/js, then compile everything from client/app/ts
 // 2. Start watching file changes in client/app/ts
 // 3. When changes happen, recompile, sync browser
 
-gulp.task('clean_client_app_dir', function(){
-    console.log("Cleaning client/app/js/*");
-    return gulp.src(['./server/client/app/js/**/*'], {read:false})
-        .pipe(gulpClean());
-});
-
 gulp.task('copy_templates', function(){
+   console.log('Copy html templates...');
    return gulp.src(['./server/client/app/ts/**/*.html']).
     pipe(gulp.dest('./server/client/app/js'));    
-})
+});
 
-gulp.task('compile_client_app', ['clean_client_app_dir', 'copy_templates'], function(){
-  
-
+gulp.task('compile_client_app', function(){
     console.log('Compiling client application...');
     return gulp.src(['./server/client/app/ts/**/*.ts'])
         .pipe(gulpSm.init())
@@ -85,31 +78,24 @@ gulp.task('compile_client_app', ['clean_client_app_dir', 'copy_templates'], func
         .pipe(gulp.dest('./server/client/app/js/'));    
 });
 
-gulp.task('browser_sync', ['compile_client_app'], function(){
+gulp.task('browser_sync', function(){
     browserSync.reload();
 });
 
-gulp.task('watch_client', ['compile_client_app'], function(){
-    return gulp.watch(['./server/client/app/ts/**/*.ts'], ['browser_sync']);
+gulp.task('watch_client_ts', ['compile_client_app', 'browser_sync'], function(){
+    console.log("Watching for file changes ./server/client/app/ts/**/*.ts");
+    return gulp.watch(['./server/client/app/ts/**/*.ts'], ['compile_client_app', 'browser_sync']);
 });
 
-gulp.task('watch_client_html', function(){
-    console.log("Watching /client/app/ts/**/*.html");
+gulp.task('watch_client_html', ['copy_templates', 'browser_sync'], function(){
+    console.log("Watching for file changes ./server/client/app/ts/**/*.html");
     return gulp.watch(['./server/client/app/ts/**/*.html'], ['copy_templates', 'browser_sync']);
-})
+});
+
+gulp.task('watch_client', ['watch_client_html', 'watch_client_ts', 'browser_sync']);
 
 //******************************************************************************
 
-gulp.task('default', ['watch_server', 'watch_client', 'watch_client_html'], function() {
+gulp.task('default', ['watch_server', 'watch_client'], function() {
     console.log("Watching all...");
 });
-
-
- gulp.task('copy', function () {
-        return gulp.src(['server/**/*'], {
-            base: 'server'
-        }).pipe(gulp.dest('server_deploy'));
-    });
-gulp.task('compile_everything', ['compile_server_app', 'compile_client_app'], function(){
-    console.log("Compiling everything !!!");
-})

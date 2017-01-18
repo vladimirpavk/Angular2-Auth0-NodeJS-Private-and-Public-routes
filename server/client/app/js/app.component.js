@@ -20,6 +20,9 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         execute: function() {
             /// <reference path="../../../../node_modules/@angular/common/index.d.ts" />
             let AppComponent = class AppComponent {
+                constructor() {
+                    this._pageTitle = "Angular 2-Auth0 - Sample application";
+                }
             };
             AppComponent = __decorate([
                 core_1.Component({
