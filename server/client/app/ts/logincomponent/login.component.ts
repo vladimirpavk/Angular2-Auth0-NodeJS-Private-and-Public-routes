@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit{
 
     public logout(): void{
         console.log("Logout button clicked...");
+        this._authService.logout();
     }
 
 }

@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './pagenotfoundcomponent/pagenotfound.comp
 import { routing,
          appRoutingProviders } from './app.routes';
 import { PathLocationStrategy, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AUTH_PROVIDERS }      from 'angular2-jwt';
 
 @NgModule({
   imports:      [ BrowserModule, routing ],
@@ -18,7 +19,7 @@ import { PathLocationStrategy, LocationStrategy, HashLocationStrategy } from '@a
                   PageNotFoundComponent
                 ],
   bootstrap:    [ AppComponent ],
-  providers: [ 
+  providers: [ AUTH_PROVIDERS,
                { 
                     provide: LocationStrategy,
                     useClass: HashLocationStrategy 

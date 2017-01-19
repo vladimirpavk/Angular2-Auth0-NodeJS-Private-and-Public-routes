@@ -2,10 +2,12 @@
 var __moduleName: any;
 
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../authservice/auth.service';
 @Component({
     moduleId: __moduleName,
     selector: 'home',
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    providers: [ AuthService ]    
 })
 export class HomeComponent implements OnInit{
 
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit{
     private _loginMessage: string;
     private _notloginMessage: string;
 
-    constructor(){
+    constructor(private _authService: AuthService){
 
     }
 

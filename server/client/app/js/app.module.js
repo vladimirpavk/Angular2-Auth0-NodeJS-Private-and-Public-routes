@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', './app.component', './homecomponent/home.component', './logincomponent/login.component', './pagenotfoundcomponent/pagenotfound.component', './app.routes', '@angular/common'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', './app.component', './homecomponent/home.component', './logincomponent/login.component', './pagenotfoundcomponent/pagenotfound.component', './app.routes', '@angular/common', 'angular2-jwt'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, app_component_1, home_component_1, login_component_1, pagenotfound_component_1, app_routes_1, common_1;
+    var core_1, platform_browser_1, app_component_1, home_component_1, login_component_1, pagenotfound_component_1, app_routes_1, common_1, angular2_jwt_1;
     var AppModule;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (angular2_jwt_1_1) {
+                angular2_jwt_1 = angular2_jwt_1_1;
             }],
         execute: function() {
             let AppModule = class AppModule {
@@ -50,7 +53,7 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
                         pagenotfound_component_1.PageNotFoundComponent
                     ],
                     bootstrap: [app_component_1.AppComponent],
-                    providers: [
+                    providers: [angular2_jwt_1.AUTH_PROVIDERS,
                         {
                             provide: common_1.LocationStrategy,
                             useClass: common_1.HashLocationStrategy

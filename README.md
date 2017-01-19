@@ -1,6 +1,9 @@
 # Angular2, NodeJS, Auth0
 Example for protecting both server and client side routes
 
+Allowed Callback URLs 
+http://localhost:3000/#/login
+
 
 
 ### Based on ExpressTSAngular2

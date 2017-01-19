@@ -1,3 +1,4 @@
-<h2>{{_homeMesage}}</h2>
-<h3>{{_loginMessage}}</h3>
-<h3>{{_notloginMessage}}</h3>
+<h3>{{_homeMesage}}</h3>
+<h3 *ngIf="_authService.authenticated()">{{_loginMessage}}</h3>
+<h3 *ngIf="!_authService.authenticated()">{{_notloginMessage}}</h3>
+
