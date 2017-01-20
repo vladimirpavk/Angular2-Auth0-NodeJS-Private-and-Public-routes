@@ -26,8 +26,14 @@ var nodemon = require('gulp-nodemon');
 
 gulp.task('clean_server_app_dir', function(){
     console.log("Cleaning server/js/*");
-    return gulp.src(['./server/js/**/*'], {read:false})
+    return gulp.src(['./server/js/**/*.js'], {read:false})
         .pipe(gulpClean());
+});
+
+gulp.task('copy_jsons', function(){
+   console.log('Copy server/ts/*.jsons...');
+   return gulp.src(['./server/ts/**/*.json']).
+    pipe(gulp.dest('./server/js'));    
 });
 
 gulp.task('compile_server_app', ['clean_server_app_dir'], function () {
@@ -40,8 +46,8 @@ gulp.task('compile_server_app', ['clean_server_app_dir'], function () {
         .pipe(gulp.dest('./server/js/'));
 });
 
-gulp.task('watch_server_changes', ['compile_server_app'], function(){
-    return gulp.watch(['./server/ts/*.ts'], ['compile_server_app']);
+gulp.task('watch_server_changes', ['compile_server_app', 'copy_jsons'], function(){
+    return gulp.watch(['./server/ts/*.ts', './server/ts/*.json'], ['compile_server_app', 'copy_jsons']);
 });
 
 gulp.task('watch_server', ['watch_server_changes'], function(){
