@@ -91,7 +91,7 @@ gulp.task('watch_client_ts', ['compile_client_app', 'browser_sync'], function(){
 
 gulp.task('watch_client_html', ['copy_templates', 'browser_sync'], function(){
     console.log("Watching for file changes ./server/client/app/ts/**/*.html");
-    return gulp.watch(['./server/client/app/**/*.html'], ['copy_templates', 'browser_sync']);
+    return gulp.watch(['./server/client/**/*.html'], ['copy_templates', 'browser_sync']);
 });
 
 gulp.task('watch_client', ['watch_client_html', 'watch_client_ts', 'browser_sync']);

@@ -11,7 +11,7 @@ import { AuthService } from '../authservice/auth.service';
 })
 export class HomeComponent implements OnInit{
 
-    private _homeMessage: string;
+    public _homeMessage: string;
     private _loginMessage: string;
     private _notloginMessage: string;
 

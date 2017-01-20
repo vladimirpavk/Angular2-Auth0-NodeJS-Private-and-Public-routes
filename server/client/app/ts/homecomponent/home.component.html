@@ -1,4 +1,11 @@
-<h3>{{_homeMesage}}</h3>
-<h3 *ngIf="_authService.authenticated()">{{_loginMessage}}</h3>
-<h3 *ngIf="!_authService.authenticated()">{{_notloginMessage}}</h3>
+<h2>{{_homeMessage}}</h2>
+
+<div *ngIf="_authService.authenticated()" class="alert alert-success">
+    <strong >{{_loginMessage}}</strong>
+</div>
+
+<div *ngIf="!_authService.authenticated()" class="alert alert-danger">
+    <strong >{{_notloginMessage}}</strong>
+</div>
+
 
