@@ -39,7 +39,7 @@ gulp.task('copy_jsons', function(){
 gulp.task('compile_server_app', ['clean_server_app_dir'], function () {
     console.log("Compiling server/ts/*.ts");
     
-    return gulp.src(['./server/ts/*.ts'])
+    return gulp.src(['./server/ts/**/*.ts'])
         .pipe(gulpSm.init())
         .pipe(gulpTs(tsProject_server))
         .pipe(gulpSm.write('./'))
@@ -47,7 +47,7 @@ gulp.task('compile_server_app', ['clean_server_app_dir'], function () {
 });
 
 gulp.task('watch_server_changes', ['compile_server_app', 'copy_jsons'], function(){
-    return gulp.watch(['./server/ts/*.ts', './server/ts/*.json'], ['compile_server_app', 'copy_jsons']);
+    return gulp.watch(['./server/ts/**/*.ts', './server/ts/**/*.json'], ['compile_server_app', 'copy_jsons']);
 });
 
 gulp.task('watch_server', ['watch_server_changes'], function(){
