@@ -3,17 +3,17 @@ import * as express from 'express';
 import * as path from 'path';
 import { Users } from './usersAPI/usersAPI';
 var usersJSON=require('./usersAPI/users.json');
-
+import { User } from './usersAPI/user.class';
 
 export class ServerApp {
     private _app: express.Express;
     private _port: number;
-    private _users: any;
+    private _users: Users;
 
     constructor(port: number){
         this._app = express();
         this._port = port;
-        this._users= new Users().readFile();                  
+        this._users= new Users();                  
 
         this._app.get('/', this._renderPage);           
         this._app.use('/node_modules', express.static(path.resolve(__dirname, '../../node_modules')));
@@ -22,8 +22,15 @@ export class ServerApp {
         this._app.get('/users', (req, res) => this._renderUsers(req, res));              
      }       
 
-    private _renderUsers(req: express.Request, res: express.Response){ 
-        res.status(200).json(this._users);   
+    private _renderUsers(req: express.Request, res: express.Response){         
+        res.status(200).json(this._users.getAllUsers());   
+        let tempUser=new User();
+        tempUser.id=5;
+        tempUser.name="Nikola";
+        tempUser.lastname="Simic";
+        tempUser.picture=null;
+        this._users.addUser(tempUser);
+        this._users.writeFile();
     }
 
     private _renderPage(req: express.Request, res: express.Response){ 
