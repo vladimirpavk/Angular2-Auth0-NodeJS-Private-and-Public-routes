@@ -22,20 +22,21 @@ export class Users{
        return this._allUsers[Math.ceil(Math.random()*this._allUsers.length)];
     }
 
-    private _compare(element:User, id:number){
-        console.log('elementid: '+ element.id+' ,id: '+id);        
-        return element.id==id; 
+    private _compare(element:User){
+        if( element.id==this ){
+            return true;
+        }        
+        else return false; 
     }
 
-    public getUserId(id: number): User{
-       return this._allUsers.find(this._compare, id);       
+    public getUserId(userId): User{        
+       return this._allUsers.find(this._compare, userId);       
     }
 
     public addUser(user: User):void{    
-        console.log(this.getUserId(5));
-
         if(!this.getUserId(user.id)){
             this._allUsers.push(user);
+            this.writeFile();
         }
         else{
             console.log("Duplicate id entry...");

@@ -1,17 +1,21 @@
 /// <reference path="../../typings/index.d.ts" />
 import * as express from 'express';
 import * as path from 'path';
+import * as jwt from 'express-jwt';
+import * as cors from 'cors';
+
 import { Users } from './usersAPI/usersAPI';
-var usersJSON=require('./usersAPI/users.json');
 import { User } from './usersAPI/user.class';
 
 export class ServerApp {
     private _app: express.Express;
     private _port: number;
-    private _users: Users;
+    private _users: Users;   
 
     constructor(port: number){
         this._app = express();
+        this._app.use(cors());
+        
         this._port = port;
         this._users= new Users();                  
 
@@ -19,18 +23,18 @@ export class ServerApp {
         this._app.use('/node_modules', express.static(path.resolve(__dirname, '../../node_modules')));
         this._app.use('/www', express.static(path.resolve(__dirname, '../client')));
         
-        this._app.get('/users', (req, res) => this._renderUsers(req, res));              
+        let jwtCheck = jwt({
+            secret: new Buffer('mWjrEcHoJqen2j7_50wtyOArgVFbqEsdogdM4jAmB2l3T-eieXJBg6ECXl8FPH6i', 'base64'),
+                    audience: 'ZCQZGEfRBplS91vkwBOe4EIGa8FnpkiQ'
+        });
+
+        this._app.use('/users', jwtCheck);
+            
+        this._app.get('/users', (req, res) => this._renderUsers(req, res));                      
      }       
 
     private _renderUsers(req: express.Request, res: express.Response){         
-        res.status(200).json(this._users.getAllUsers());   
-        let tempUser=new User();
-        tempUser.id=5;
-        tempUser.name="Nikola";
-        tempUser.lastname="Simic";
-        tempUser.picture=null;
-        this._users.addUser(tempUser);
-        this._users.writeFile();
+        res.status(200).json(this._users.getAllUsers());          
     }
 
     private _renderPage(req: express.Request, res: express.Response){ 

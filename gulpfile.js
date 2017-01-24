@@ -36,7 +36,7 @@ gulp.task('copy_jsons', function(){
     pipe(gulp.dest('./server/js'));    
 });
 
-gulp.task('compile_server_app', ['clean_server_app_dir'], function () {
+gulp.task('compile_server_app', function () {
     console.log("Compiling server/ts/*.ts");
     
     return gulp.src(['./server/ts/**/*.ts'])
