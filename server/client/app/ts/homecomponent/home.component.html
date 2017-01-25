@@ -8,4 +8,11 @@
     <strong >{{_notloginMessage}}</strong>
 </div>
 
+<div *ngFor="let user of _users">
+    {{user.id}}
+    {{user.name}}    
+    {{user.lastname}}
+    {{user.pict}}
+</div>
+
 

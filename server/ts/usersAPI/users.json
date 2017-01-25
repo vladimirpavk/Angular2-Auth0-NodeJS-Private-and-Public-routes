@@ -1,38 +1,41 @@
-[
-    {
-        "id": 1,
-        "name": "Vladimir",
-        "lastname": "Pavković",
-        "pict": null        
-    },
-    {
-        "id": 2,
-        "name": "Nataša",
-        "lastname": "Pavković",
-        "pict": null        
-    },
-    {
-        "id": 3,
-        "name": "Pavle",
-        "lastname": "Pavković",
-        "pict": null        
-    },
-    {
-        "id": 4,
-        "name": "Milica",
-        "lastname": "Pavković",
-        "pict": null        
-    },
-    {
-        "id": 5,
-        "name": "Dragica",
-        "lastname": "Stevanovski",
-        "pict": null        
-    },
-    {
-        "id": 6,
-        "name": "Blaža",
-        "lastname": "Stevanovski",
-        "pict": null        
-    }
-]
+{
+    "data":
+    [
+        {
+            "id": 1,
+            "name": "Vladimir",
+            "lastname": "Pavković",
+            "pict": null        
+        },
+        {
+            "id": 2,
+            "name": "Nataša",
+            "lastname": "Pavković",
+            "pict": null        
+        },
+        {
+            "id": 3,
+            "name": "Pavle",
+            "lastname": "Pavković",
+            "pict": null        
+        },
+        {
+            "id": 4,
+            "name": "Milica",
+            "lastname": "Pavković",
+            "pict": null        
+        },
+        {
+            "id": 5,
+            "name": "Dragica",
+            "lastname": "Stevanovski",
+            "pict": null        
+        },
+        {
+            "id": 6,
+            "name": "Blaža",
+            "lastname": "Stevanovski",
+            "pict": null        
+        }
+    ]   
+}
