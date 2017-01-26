@@ -1,10 +1,13 @@
 # Angular2, NodeJS, Auth0
-Example for protecting both server and client side routes
+Example for protecting both server and client side routes using JWTs
 
-Allowed Callback URLs 
-http://localhost:3000/#/login
+Server side route we are protecting is https://localhost:3036/users or appropriate browser-sync proxy. This route returns
+a text/json. For JWTs check use *express-jwt*.
 
+Client side route we are protecting is http://localhost:3036/#/home. For JWTs check use *angular2-jwt* module.
 
+**Auth0 application account configuration**
+Allowed Callback URLs http://localhost:3000/#/login
 
 ### Based on ExpressTSAngular2
 Node, Express, TypeScript, Gulp, BrowserSync, Angular2 application skeleton.
