@@ -53,6 +53,8 @@ export class AuthenticationCallbackActivateGuard implements CanActivate {
 It checks if the URL contains the *access_token* and if it does  **AuthenticationCallbackActivateGuard** assumes that it is JWT and redirects to **/login**. That way we deliver the
 JWT from *http://localhost/#access_token..."* to *http://localhost:3036/#/login*.
 
+###PathLocationStrategy
+
 
 
 

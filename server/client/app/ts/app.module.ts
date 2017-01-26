@@ -29,7 +29,8 @@ export function authConfigProvider(){
   providers: [ AUTH_PROVIDERS,
                { 
                     provide: LocationStrategy,
-                    useClass: HashLocationStrategy 
+                    /*useClass: HashLocationStrategy*/
+                    useClass: PathLocationStrategy 
                },
                appRoutingProviders,             
                {
