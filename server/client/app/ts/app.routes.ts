@@ -1,6 +1,7 @@
 import { ModuleWithProviders }         from '@angular/core';
 import { Routes, RouterModule }        from '@angular/router';
 
+import { AppComponent } from './app.component';
 import { LoginComponent } from './logincomponent/login.component';
 import { HomeComponent } from './homecomponent/home.component';
 import { PageNotFoundComponent } from './pagenotfoundcomponent/pagenotfound.component';
@@ -23,8 +24,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },  
   { path: 'home', component: HomeComponent },
-  //{ path: 'pagenotfound', component: PageNotFoundComponent, canActivate: [AuthenticationCallbackActivateGuard] },  
-  { path: '**', redirectTo: 'login' }  
+  { path: 'defurl', component: AppComponent },
+  { path: '**', redirectTo: 'defurl' }  
 ];
 
 export const appRoutingProviders: any[] = [  
