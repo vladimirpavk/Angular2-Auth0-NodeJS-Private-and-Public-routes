@@ -51,12 +51,20 @@ export class AuthenticationCallbackActivateGuard implements CanActivate {
 ```
 
 It checks if the URL contains the *access_token* and if it does  **AuthenticationCallbackActivateGuard** assumes that it is JWT and redirects to **/login**. That way we deliver the
-JWT from *http://localhost/#access_token..."* to *http://localhost:3036/#/login*.
+JWT from *http://localhost/#access_token...* to *http://localhost:3036/#/login*.
+
 
 ###PathLocationStrategy
 
+It is neccessary to change server route configuration. Server must redirect unhandled routes to a route that renders *index.js* (Angular2 - start point) file. 
 
+```
+  this._app.get('*', (req, res) => {
+            res.redirect('/');
+        });
+```
 
+We do not have to use Active Guard any more.
 
 
 **Auth0 application account configuration**

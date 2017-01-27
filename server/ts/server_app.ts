@@ -28,9 +28,12 @@ export class ServerApp {
                     audience: 'ZCQZGEfRBplS91vkwBOe4EIGa8FnpkiQ'
         });
 
-        this._app.use('/users', jwtCheck);
-            
-        this._app.get('/users', (req, res) => this._renderUsers(req, res));                      
+        this._app.use('/users', jwtCheck);            
+        this._app.get('/users', (req, res) => this._renderUsers(req, res));
+
+        this._app.get('*', (req, res)=>{
+            res.redirect('/');
+        });                       
      }       
 
     private _renderUsers(req: express.Request, res: express.Response){         
