@@ -1,5 +1,5 @@
 /node_modules
 /typings
-/server/client/app/js/**/*
+/server/client/app/js/**
 /server/js
 /.vscode
