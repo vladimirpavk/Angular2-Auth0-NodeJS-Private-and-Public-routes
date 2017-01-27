@@ -63,7 +63,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/http', 
                     providers: [angular2_jwt_1.AUTH_PROVIDERS,
                         {
                             provide: common_1.LocationStrategy,
-                            useClass: common_1.HashLocationStrategy
+                            /*useClass: HashLocationStrategy*/
+                            useClass: common_1.PathLocationStrategy
                         },
                         app_routes_1.appRoutingProviders,
                         {
