@@ -21,11 +21,11 @@ const appRoutes: Routes = [
 
 //When we use PathLocationStrategy
 const appRoutes: Routes = [  
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },  
   { path: 'home', component: HomeComponent },
-  { path: 'defurl', component: AppComponent },
-  { path: '**', redirectTo: 'defurl' }  
+  { path: 'pnf', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'pnf', pathMatch: 'full'}
 ];
 
 export const appRoutingProviders: any[] = [  
