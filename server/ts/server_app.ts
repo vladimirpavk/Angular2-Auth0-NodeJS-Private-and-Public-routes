@@ -19,7 +19,7 @@ export class ServerApp {
         this._port = port;
         this._users= new Users();                  
 
-        this._app.get('/', this._renderPage);           
+        //this._app.get('/', this._renderPage);           
         this._app.use('/node_modules', express.static(path.resolve(__dirname, '../../node_modules')));
         this._app.use('/www', express.static(path.resolve(__dirname, '../client')));
         
@@ -32,7 +32,9 @@ export class ServerApp {
         this._app.get('/users', (req, res) => this._renderUsers(req, res));
 
         this._app.get('*', (req, res)=>{
-            res.redirect('/');
+          /*  console.log("Redirected from *");
+            res.redirect('/');*/
+            res.sendFile(path.resolve(__dirname, '../client/index.html'));
         });                       
      }       
 
